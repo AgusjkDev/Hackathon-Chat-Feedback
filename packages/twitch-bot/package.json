@@ -1,0 +1,41 @@
+{
+    "name": "twitch-bot",
+    "version": "1.0.0",
+    "main": "dist/index.js",
+    "scripts": {
+        "dev": "concurrently \"npx tsc --watch\" \"nodemon -q dist/index.js\"",
+        "build": "npx tsc",
+        "start": "node dist/index.js",
+        "format": "npx prettier --write ."
+    },
+    "type": "module",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/agusjkdev/hackathon-chat-feedback.git#main"
+    },
+    "keywords": [
+        "twitch",
+        "bot",
+        "socket.io",
+        "realtime"
+    ],
+    "author": "Agustín Arnoldi",
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/agusjkdev/hackathon-chat-feedback/issues"
+    },
+    "homepage": "https://github.com/agusjkdev/hackathon-chat-feedback/tree/main#readme",
+    "dependencies": {
+        "dotenv": "16.0.3",
+        "socket.io-client": "4.5.4",
+        "tmi.js": "1.8.5"
+    },
+    "devDependencies": {
+        "@types/node": "18.11.18",
+        "@types/tmi.js": "1.8.2",
+        "concurrently": "7.6.0",
+        "nodemon": "2.0.20",
+        "prettier": "2.8.3",
+        "typescript": "4.9.5"
+    }
+}

@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    svg {
+        @apply fill-primary transition-colors duration-300 group-hover:fill-secondary;
+    }
+}
