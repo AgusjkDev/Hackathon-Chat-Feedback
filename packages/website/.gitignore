@@ -1,3 +1,4 @@
+.env
 .next
 .vscode
 package-lock.json
