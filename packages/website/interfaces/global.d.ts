@@ -1,3 +1,8 @@
+interface SVG {
+    viewBox: string;
+    path: string;
+}
+
 interface ProjectFeedback {
     total: number;
     positive: number;
