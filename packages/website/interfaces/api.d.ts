@@ -2,7 +2,11 @@ import { StatusCode } from "enums/api";
 
 export interface APIError {
     msg: string;
-    status: StatusCode;
+    status:
+        | StatusCode.BadRequest
+        | StatusCode.NotFound
+        | StatusCode.MethodNotAllowed
+        | StatusCode.InternalServerError;
 }
 
 interface GetProjects {
