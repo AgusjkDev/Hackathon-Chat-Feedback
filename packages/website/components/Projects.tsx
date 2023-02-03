@@ -53,7 +53,7 @@ export default function Projects() {
                     return (
                         <div
                             key={_id}
-                            className="flex w-full flex-col gap-6 rounded-sm border-[1px] border-primary-light p-5 transition-colors duration-300 first:animate-fade-in-down hover:border-secondary-light md:p-7"
+                            className="flex w-full animate-fade-in-down flex-col gap-6 rounded-sm border-[1px] border-primary-light p-5 transition-colors duration-300 hover:border-secondary-light md:p-7"
                         >
                             <header className="grid w-full grid-cols-[1fr,3fr,1fr] place-items-center gap-x-2">
                                 {isAdminPanel ? (
