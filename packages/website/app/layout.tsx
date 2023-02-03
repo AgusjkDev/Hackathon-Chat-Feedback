@@ -8,7 +8,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             <head />
 
             <body className="bg-primary-lightest text-primary">
-                <header className="sticky top-0 w-full bg-white p-5 shadow-md">
+                <header className="sticky top-0 z-[1] w-full bg-white p-5 shadow-md">
                     <Link href="/">
                         <h1 className="text-center text-2xl font-black text-secondary md:text-3xl">
                             Hackathon Chat Feedback
