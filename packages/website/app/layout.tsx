@@ -7,7 +7,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <html lang="es">
             <head />
 
-            <body className="md:scrollbar bg-primary-lightest text-primary md:[overflow-y:overlay]">
+            <body className="bg-primary-lightest text-primary">
                 <header className="sticky top-0 w-full bg-white p-5 shadow-md">
                     <Link href="/">
                         <h1 className="text-center text-2xl font-black text-secondary md:text-3xl">
