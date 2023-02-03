@@ -67,7 +67,7 @@ export default function Projects() {
                                 )}
 
                                 <Link href={website}>
-                                    <h2 className="text-center text-xl font-bold text-secondary md:text-2xl">
+                                    <h2 className="text-center text-xl font-bold text-secondary transition-colors duration-300 hover:text-secondary-dark md:text-2xl">
                                         {name}
                                     </h2>
                                 </Link>
