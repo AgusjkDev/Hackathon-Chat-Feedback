@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 
 import Button from "./Button";
 import Projects from "./Projects";
@@ -13,7 +14,7 @@ import { Event } from "enums/events";
 export default function AdminPanel() {
     const [form, setForm] = useState<BaseForm | null>(null);
     const [currentProject, setCurrentProject] = useState<Project | null>(null);
-    const { projects, setProjects } = useProjects();
+    const { projects, isFetching, setProjects } = useProjects();
     const { showModal, toggleShowModal, handleOutsideModalClick } = useModal();
     const { alert, showAlert, setAlert } = useAlert();
     const { socket } = useSocket();
@@ -111,11 +112,15 @@ export default function AdminPanel() {
                     Crear Proyecto
                 </Button>
 
-                <Projects
-                    projects={projects}
-                    handleUpdate={handleUpdateClick}
-                    handleDelete={handleDeleteClick}
-                />
+                {isFetching ? (
+                    <Image alt="Cargando..." src="/spinner.svg" width={32} height={32} />
+                ) : (
+                    <Projects
+                        projects={projects}
+                        handleUpdate={handleUpdateClick}
+                        handleDelete={handleDeleteClick}
+                    />
+                )}
             </div>
 
             {showModal && (
