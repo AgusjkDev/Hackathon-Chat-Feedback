@@ -4,6 +4,7 @@ export interface APIError {
     msg: string;
     status:
         | StatusCode.BadRequest
+        | StatusCode.Unauthorized
         | StatusCode.NotFound
         | StatusCode.MethodNotAllowed
         | StatusCode.InternalServerError;
@@ -29,3 +30,12 @@ interface DeleteProjects {
 }
 
 interface ExpectedProjectsBody extends Project {}
+
+interface PostAdmin {
+    status: StatusCode.OK;
+}
+
+interface ExpectedAdminBody {
+    username: string;
+    password: string;
+}
