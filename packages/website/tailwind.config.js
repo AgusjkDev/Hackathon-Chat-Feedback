@@ -23,6 +23,21 @@ module.exports = {
                     DEFAULT: colors.slate[500],
                 },
             },
+            keyframes: {
+                "fade-in-down": {
+                    "0%": {
+                        opacity: 0,
+                        transform: "translateY(-75%)",
+                    },
+                    "100%": {
+                        opacity: 1,
+                        transform: "translateY(0%)",
+                    },
+                },
+            },
+            animation: {
+                "fade-in-down": "fade-in-down 1.25s",
+            },
         },
     },
     plugins: [],
