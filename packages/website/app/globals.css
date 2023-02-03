@@ -7,3 +7,22 @@
         @apply fill-primary transition-colors duration-300 group-hover:fill-secondary;
     }
 }
+
+@layer components {
+    .scrollbar {
+        scrollbar-width: thin;
+        scrollbar-color: #6366f1 transparent;
+    }
+
+    .scrollbar::-webkit-scrollbar {
+        @apply w-3;
+    }
+
+    .scrollbar::-webkit-scrollbar-thumb {
+        @apply rounded-full border-[3px] border-solid border-transparent bg-secondary-light bg-clip-content;
+    }
+
+    .scrollbar::-webkit-scrollbar-track {
+        @apply bg-transparent;
+    }
+}
