@@ -1,16 +1,5 @@
 {
     "compilerOptions": {
-        "target": "es2016",
-        "module": "NodeNext",
-        "baseUrl": ".",
-        "outDir": "./dist",
-        "removeComments": true,
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
-        "strict": true,
-        "noImplicitAny": true,
-        "skipLibCheck": true
-    },
-    "include": ["**/*.ts"],
-    "exclude": ["node_modules"]
+        "baseUrl": "./src"
+    }
 }
