@@ -1,8 +1,9 @@
 "use client";
 
-import Form, { HandleSubmit } from "./Form";
+import Form from "./Form";
 import { postAdmin } from "services";
 import { loginForm } from "data/forms";
+import type { HandleSubmit } from "./Form";
 
 interface LoginFormProps {
     setIsLogged: React.Dispatch<React.SetStateAction<boolean>>;
