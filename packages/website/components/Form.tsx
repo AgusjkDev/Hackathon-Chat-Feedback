@@ -44,6 +44,10 @@ export default function Form({ title, fields, submitText, handleSubmit }: FormPr
                         return setErrorMessage("¡Debes completar todos los campos!");
                     }
 
+                    if (fields.every(({ key, initialValue }) => initialValue === values[key])) {
+                        return setErrorMessage("¡Debes actualizar por lo menos un campo!");
+                    }
+
                     try {
                         handleSubmit(values, setErrorMessage, resetForm);
                     } catch (e) {
