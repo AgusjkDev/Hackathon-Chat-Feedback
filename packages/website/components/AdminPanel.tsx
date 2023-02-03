@@ -1,17 +1,14 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import io from "socket.io-client";
 
 import Button from "./Button";
 import Projects from "./Projects";
 import Form, { HandleSubmit } from "./Form";
-import { useProjects, useModal, useAlert } from "hooks";
+import { useProjects, useModal, useAlert, useSocket } from "hooks";
 import { postProjects, putProjects, deleteProjects } from "services";
 import { BaseForm, createForm, updateForm } from "data/forms";
 import { Event } from "enums/events";
-
-const socket = io(process.env.NEXT_PUBLIC_SOCKETIO_URL!);
 
 export default function AdminPanel() {
     const [form, setForm] = useState<BaseForm | null>(null);
@@ -19,6 +16,7 @@ export default function AdminPanel() {
     const { projects, setProjects } = useProjects();
     const { showModal, toggleShowModal, handleOutsideModalClick } = useModal();
     const { alert, showAlert, setAlert } = useAlert();
+    const { socket } = useSocket();
 
     const handleSubmit: HandleSubmit = async (values, setErrorMessage, resetForm) => {
         const formType = form!.type;
