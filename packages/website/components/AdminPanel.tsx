@@ -1,6 +1,7 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import io from "socket.io-client";
 
 import Button from "./Button";
 import Projects from "./Projects";
@@ -8,6 +9,9 @@ import Form, { HandleSubmit } from "./Form";
 import { useProjects, useModal, useAlert } from "hooks";
 import { postProjects, putProjects, deleteProjects } from "services";
 import { BaseForm, createForm, updateForm } from "data/forms";
+import { Event } from "enums/events";
+
+const socket = io(process.env.NEXT_PUBLIC_SOCKETIO_URL!);
 
 export default function AdminPanel() {
     const [form, setForm] = useState<BaseForm | null>(null);
@@ -30,12 +34,14 @@ export default function AdminPanel() {
         }
 
         if (formType === "create") {
+            socket.emit(Event.CreatedProject, project);
             setProjects(prevState => [project!, ...prevState]);
             setAlert({ message: "Proyecto creado satisfactoriamente.", type: "success" });
 
             return toggleShowModal();
         }
 
+        socket.emit(Event.UpdatedProject, project);
         setProjects(prevState =>
             prevState.map(prevStateProject =>
                 prevStateProject._id !== project!._id ? prevStateProject : project!
@@ -72,8 +78,33 @@ export default function AdminPanel() {
             setAlert({ message: "Proyecto eliminado satisfactoriamente.", type: "success" });
         }
 
+        socket.emit(Event.DeletedProject, project);
         setProjects(prevState => prevState.filter(project => project._id !== _id));
     };
+
+    useEffect(() => {
+        socket.on(Event.CreatedProject, (project: Project) =>
+            setProjects(prevState => [project, ...prevState])
+        );
+
+        socket.on(Event.UpdatedProject, (updatedProject: Project) =>
+            setProjects(prevState =>
+                prevState.map(project =>
+                    project._id === updatedProject._id ? updatedProject : project
+                )
+            )
+        );
+
+        socket.on(Event.DeletedProject, (deletedProject: Project) =>
+            setProjects(prevState =>
+                prevState.filter(project => project._id !== deletedProject._id)
+            )
+        );
+
+        return () => {
+            socket.removeAllListeners();
+        };
+    }, [socket, setProjects]);
 
     return (
         <>
