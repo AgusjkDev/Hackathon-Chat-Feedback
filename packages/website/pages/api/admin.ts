@@ -1,6 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { APIError, PostAdmin, ExpectedAdminBody } from "interfaces/api";
+import { APIError, PostAdmin, ExpectedAdminBody } from "types/api";
 import { HTTPMethod, StatusCode } from "enums/api";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<APIError | PostAdmin>) {

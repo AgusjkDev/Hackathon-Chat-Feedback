@@ -9,7 +9,7 @@ import {
     PutProjects,
     DeleteProjects,
     ExpectedProjectsBody,
-} from "interfaces/api";
+} from "types/api";
 import { HTTPMethod, StatusCode } from "enums/api";
 
 export default async function handler(

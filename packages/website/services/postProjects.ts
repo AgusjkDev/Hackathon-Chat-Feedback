@@ -1,4 +1,4 @@
-import { APIError, PostProjects } from "interfaces/api";
+import { APIError, PostProjects } from "types/api";
 import { StatusCode } from "enums/api";
 
 export default async function postProjects(values: {

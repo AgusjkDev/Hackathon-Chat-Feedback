@@ -1,4 +1,4 @@
-import { APIError, PostAdmin } from "interfaces/api";
+import { APIError, PostAdmin } from "types/api";
 import { StatusCode } from "enums/api";
 
 export default async function postAdmin(values: {

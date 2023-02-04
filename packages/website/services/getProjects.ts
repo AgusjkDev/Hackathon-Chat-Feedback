@@ -1,4 +1,4 @@
-import { APIError, GetProjects } from "interfaces/api";
+import { APIError, GetProjects } from "types/api";
 import { StatusCode } from "enums/api";
 
 export default async function getProjects(): Promise<Project[]> {
