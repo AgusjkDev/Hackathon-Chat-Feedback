@@ -10,6 +10,10 @@ const projectSchema = new Schema<Project>({
         negative: { type: Number, default: 0 },
         neutral: { type: Number, default: 0 },
     },
+    isActive: {
+        type: Boolean,
+        default: true,
+    },
 });
 
 export const ProjectModel = models.Project || model<Project>("Project", projectSchema);

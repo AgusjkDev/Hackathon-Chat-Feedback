@@ -16,4 +16,5 @@ interface Project {
     website: string;
     repository: string;
     feedback: ProjectFeedback;
+    isActive: boolean;
 }

@@ -52,7 +52,11 @@ export default function ProjectsProvider({ children }: ProjectsProviderProps) {
         }
 
         socket.emit(Event.DeletedProject, project);
-        setProjects(projects.filter(({ _id }) => _id !== project._id));
+        setProjects(
+            projects
+                .filter(({ _id }) => _id !== project._id)
+                .map((p, i) => (i === 0 ? { ...p, isActive: true } : p))
+        );
         dispatch({
             type: Type.HANDLE_DELETE,
             payload: notFound
@@ -88,7 +92,7 @@ export default function ProjectsProvider({ children }: ProjectsProviderProps) {
         socket.emit(isCreateForm ? Event.CreatedProject : Event.UpdatedProject, project);
         setProjects(
             isCreateForm
-                ? [project!, ...projects]
+                ? [project!, ...projects.map(p => ({ ...p, isActive: false }))]
                 : projects.map(p => (p._id !== project!._id ? p : project!))
         );
         dispatch({

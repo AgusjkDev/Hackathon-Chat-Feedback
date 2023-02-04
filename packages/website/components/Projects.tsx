@@ -47,8 +47,8 @@ export default function Projects() {
             {isLoading ? (
                 <Image alt="Cargando..." src="/spinner.svg" width={36} height={36} />
             ) : (
-                projects.map((project, index) => {
-                    const { _id, name, website, repository, feedback } = project;
+                projects.map(project => {
+                    const { _id, name, website, repository, feedback, isActive } = project;
 
                     return (
                         <div
@@ -97,7 +97,7 @@ export default function Projects() {
 
                             <Feedback feedback={feedback} />
 
-                            {index !== 0 && (
+                            {!isActive && (
                                 <footer className="mx-auto">
                                     <span className="flex text-center text-sm font-medium">
                                         El análisis de éste proyecto acabó&nbsp;

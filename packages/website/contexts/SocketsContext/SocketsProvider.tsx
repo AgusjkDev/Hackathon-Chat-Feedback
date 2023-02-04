@@ -22,7 +22,7 @@ export default function SocketsProvider({ children }: SocketsProviderProps) {
         const { socket } = state;
 
         socket.on(Event.CreatedProject, (createdProject: Project) => {
-            setProjects([createdProject, ...projects]);
+            setProjects([createdProject, ...projects.map(p => ({ ...p, isActive: false }))]);
         });
 
         socket.on(Event.UpdatedProject, (updatedProject: Project) => {
@@ -34,7 +34,11 @@ export default function SocketsProvider({ children }: SocketsProviderProps) {
         });
 
         socket.on(Event.DeletedProject, (deletedProject: Project) => {
-            setProjects(projects.filter(project => project._id !== deletedProject._id));
+            setProjects(
+                projects
+                    .filter(project => project._id !== deletedProject._id)
+                    .map((p, i) => (i === 0 ? { ...p, isActive: true } : p))
+            );
         });
 
         return () => {

@@ -9,4 +9,5 @@ interface Project {
         negative: number;
         neutral: number;
     };
+    isActive: boolean;
 }

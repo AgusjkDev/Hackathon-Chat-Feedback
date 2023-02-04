@@ -48,6 +48,9 @@ export default async function handler(
             try {
                 await db.connect();
 
+                // Set the current active project as no longer active
+                await ProjectModel.updateOne({ isActive: true }, { $set: { isActive: false } });
+
                 const project = await ProjectModel.create({ name, website, repository });
 
                 return res.status(StatusCode.Created).json({ project, status: StatusCode.Created });
@@ -103,6 +106,13 @@ export default async function handler(
                         .status(StatusCode.NotFound)
                         .json({ msg: "¡Proyecto no encontrado!", status: StatusCode.NotFound });
                 }
+
+                // Set the last project before the deleted one as active
+                await ProjectModel.updateOne(
+                    {},
+                    { $set: { isActive: true } },
+                    { sort: { createdAt: -1 } }
+                );
 
                 return res.status(StatusCode.OK).json({ status: StatusCode.OK });
             } catch (e) {
