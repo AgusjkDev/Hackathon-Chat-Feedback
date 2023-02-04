@@ -8,15 +8,20 @@ import {
     PostProjects,
     PutProjects,
     DeleteProjects,
+    PatchProjects,
     ExpectedProjectsBody,
 } from "types/api";
 import { HTTPMethod, StatusCode } from "enums/api";
 
 export default async function handler(
     req: NextApiRequest,
-    res: NextApiResponse<APIError | GetProjects | PostProjects | PutProjects | DeleteProjects>
+    res: NextApiResponse<
+        APIError | GetProjects | PostProjects | PutProjects | DeleteProjects | PatchProjects
+    >
 ) {
-    const { _id, name, website, repository, feedback } = <ExpectedProjectsBody>req.body;
+    const { _id, name, website, repository, feedback, newFeedback } = <ExpectedProjectsBody>(
+        req.body
+    );
     const method = <HTTPMethod>req.method;
 
     switch (method) {
@@ -112,6 +117,31 @@ export default async function handler(
                     {},
                     { $set: { isActive: true } },
                     { sort: { createdAt: -1 } }
+                );
+
+                return res.status(StatusCode.OK).json({ status: StatusCode.OK });
+            } catch (e) {
+                console.error(e);
+
+                return res.status(StatusCode.InternalServerError).json({
+                    msg: "¡Ha ocurrido un error interno en el servidor!",
+                    status: StatusCode.InternalServerError,
+                });
+            }
+
+        case HTTPMethod.PATCH:
+            if (!newFeedback) {
+                return res
+                    .status(StatusCode.BadRequest)
+                    .json({ msg: "¡Petición Inválida!", status: StatusCode.BadRequest });
+            }
+
+            try {
+                await db.connect();
+
+                await ProjectModel.updateOne(
+                    { isActive: true },
+                    { $inc: { "feedback.total": 1, [`feedback.${newFeedback}`]: 1 } }
                 );
 
                 return res.status(StatusCode.OK).json({ status: StatusCode.OK });

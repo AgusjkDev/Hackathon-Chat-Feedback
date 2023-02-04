@@ -3,4 +3,5 @@ export enum Event {
     UpdatedProject = "updated-project",
     DeletedProject = "deleted-project",
     ChatMessage = "chat-message",
+    Feedback = "feedback",
 }

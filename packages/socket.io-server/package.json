@@ -24,6 +24,7 @@
     },
     "homepage": "https://github.com/agusjkdev/hackathon-chat-feedback/tree/main#readme",
     "dependencies": {
+        "csvtojson": "2.0.10",
         "dotenv": "16.0.3",
         "socket.io": "4.5.4"
     },

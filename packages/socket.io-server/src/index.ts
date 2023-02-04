@@ -1,8 +1,9 @@
 import { createServer } from "http";
 import { Server } from "socket.io";
-import * as dotenv from "dotenv";
+import dotenv from "dotenv";
 
-import { Event } from "enums/events";
+import { getFeedback, patchFeedback } from "./services";
+import { Event, Feedback } from "./enums";
 
 dotenv.config();
 
@@ -24,10 +25,12 @@ io.on("connection", socket => {
         socket.broadcast.emit(Event.DeletedProject, deletedProject)
     );
 
-    socket.on(Event.ChatMessage, (chatMessage: { username: string; message: string }) => {
-        const { username, message } = chatMessage;
+    socket.on(Event.ChatMessage, async (message: string) => {
+        const feedback = await getFeedback(message);
+        if (feedback === Feedback.Unknown) return;
 
-        console.log(`Received chat message from ${username}: ${message}`);
+        socket.broadcast.emit(Event.Feedback, feedback);
+        patchFeedback(feedback);
     });
 });
 

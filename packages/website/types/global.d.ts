@@ -18,3 +18,5 @@ interface Project {
     feedback: ProjectFeedback;
     isActive: boolean;
 }
+
+type NewFeedback = keyof Omit<ProjectFeedback, "total">;

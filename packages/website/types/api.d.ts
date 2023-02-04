@@ -29,7 +29,13 @@ interface DeleteProjects {
     status: StatusCode.OK;
 }
 
-interface ExpectedProjectsBody extends Project {}
+interface PatchProjects {
+    status: StatusCode.OK;
+}
+
+interface ExpectedProjectsBody extends Project {
+    newFeedback?: NewFeedback;
+}
 
 interface PostAdmin {
     status: StatusCode.OK;

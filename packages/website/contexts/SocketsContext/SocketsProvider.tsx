@@ -41,6 +41,23 @@ export default function SocketsProvider({ children }: SocketsProviderProps) {
             );
         });
 
+        socket.on(Event.Feedback, (newFeedback: NewFeedback) => {
+            setProjects(
+                projects.map(p =>
+                    p.isActive
+                        ? {
+                              ...p,
+                              feedback: {
+                                  ...p.feedback,
+                                  total: p.feedback.total + 1,
+                                  [newFeedback]: p.feedback[newFeedback] + 1,
+                              },
+                          }
+                        : p
+                )
+            );
+        });
+
         return () => {
             socket.removeAllListeners();
         };
