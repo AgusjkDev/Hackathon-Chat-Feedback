@@ -1,6 +1,6 @@
 import tmi from "tmi.js";
 import io from "socket.io-client";
-import dotenv from "dotenv";
+import * as dotenv from "dotenv";
 
 dotenv.config();
 
@@ -16,10 +16,8 @@ const socket = io(process.env.SOCKETIO_URL ?? "");
 
 client.connect().catch(console.error);
 
-client.on("message", (_, tags, message, self) => {
+client.on("message", (_, __, message, self) => {
     if (self) return;
 
-    const { username } = tags;
-
-    socket.emit("chat-message", { username, message });
+    socket.emit("chat-message", message);
 });
