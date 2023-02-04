@@ -1,3 +1,5 @@
+import fetch from "cross-fetch";
+
 import getExamples from "./getExamples";
 import { Feedback } from "../enums";
 

@@ -1,3 +1,5 @@
+import fetch from "cross-fetch";
+
 import { Feedback } from "../enums";
 
 export default function patchFeedback(newFeedback: Feedback): void {
