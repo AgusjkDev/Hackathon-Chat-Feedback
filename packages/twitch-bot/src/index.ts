@@ -1,6 +1,6 @@
 import tmi from "tmi.js";
 import io from "socket.io-client";
-import * as dotenv from "dotenv";
+import dotenv from "dotenv";
 
 dotenv.config();
 
