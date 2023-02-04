@@ -16,7 +16,7 @@ export default async function handler(
     req: NextApiRequest,
     res: NextApiResponse<APIError | GetProjects | PostProjects | PutProjects | DeleteProjects>
 ) {
-    const { _id, name, website, repository } = <ExpectedProjectsBody>req.body;
+    const { _id, name, website, repository, feedback } = <ExpectedProjectsBody>req.body;
     const method = <HTTPMethod>req.method;
 
     switch (method) {
@@ -61,7 +61,7 @@ export default async function handler(
             }
 
         case HTTPMethod.PUT:
-            if (![name, website, repository].every(value => value)) {
+            if (![_id, name, website, repository, feedback].every(value => value)) {
                 return res
                     .status(StatusCode.BadRequest)
                     .json({ msg: "¡Petición Inválida!", status: StatusCode.BadRequest });
