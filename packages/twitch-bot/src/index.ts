@@ -12,7 +12,11 @@ const client = new tmi.Client({
     channels: [process.env.TWITCH_CHANNEL ?? ""],
 });
 
-const socket = io(process.env.SOCKETIO_URL ?? "");
+const socket = io(process.env.SOCKETIO_URL ?? "", {
+    extraHeaders: {
+        TWITCH_BOT_KEY: process.env.TWITCH_BOT_KEY,
+    },
+});
 
 client.connect().catch(console.error);
 

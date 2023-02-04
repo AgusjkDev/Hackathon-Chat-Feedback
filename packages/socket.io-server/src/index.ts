@@ -8,8 +8,17 @@ import { Event, Feedback } from "./enums";
 dotenv.config();
 
 const server = createServer();
-const io = new Server(server, {
-    cors: { origin: process.env.CLIENT_URL ?? "" },
+const io = new Server(server);
+
+io.use((socket, next) => {
+    const origin = socket.request.headers.origin;
+    const twitchBotKey = socket.request.headers["twitch_bot_key"];
+
+    if (origin === process.env.CLIENT_URL || twitchBotKey === process.env.TWITCH_BOT_KEY) {
+        return next();
+    }
+
+    return next(new Error("¡No estás autorizado!"));
 });
 
 io.on("connection", socket => {
