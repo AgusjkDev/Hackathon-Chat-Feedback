@@ -4,6 +4,7 @@
 
 @layer base {
     html {
+        scroll-behavior: smooth;
         scrollbar-width: thin;
         scrollbar-color: #6366f1 transparent;
         overflow-y: overlay;

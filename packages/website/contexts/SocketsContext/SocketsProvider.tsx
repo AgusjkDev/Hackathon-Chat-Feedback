@@ -23,6 +23,7 @@ export default function SocketsProvider({ children }: SocketsProviderProps) {
 
         socket.on(Event.CreatedProject, (createdProject: Project) => {
             setProjects([createdProject, ...projects.map(p => ({ ...p, isActive: false }))]);
+            window.scroll(0, 0);
         });
 
         socket.on(Event.UpdatedProject, (updatedProject: Project) => {

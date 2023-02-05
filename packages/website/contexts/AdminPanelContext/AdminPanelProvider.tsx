@@ -102,6 +102,8 @@ export default function ProjectsProvider({ children }: ProjectsProviderProps) {
                 type: "success",
             },
         });
+
+        if (isCreateForm) window.scroll(0, 0);
     };
 
     useEffect(() => {
