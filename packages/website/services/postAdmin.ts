@@ -1,5 +1,5 @@
-import { APIError, PostAdmin } from "types/api";
 import { StatusCode } from "enums/api";
+import type { APIError, PostAdmin } from "types/api";
 
 export default async function postAdmin(values: {
     [key: string]: string;

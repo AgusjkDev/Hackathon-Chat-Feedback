@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 
-import { APIError, PostAdmin, ExpectedAdminBody } from "types/api";
 import { HTTPMethod, StatusCode } from "enums/api";
+import type { APIError, PostAdmin, ExpectedAdminBody } from "types/api";
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<APIError | PostAdmin>) {
     const { username, password } = <ExpectedAdminBody>req.body;

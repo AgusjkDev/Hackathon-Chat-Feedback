@@ -1,4 +1,4 @@
-import { useContext, useEffect, useReducer } from "react";
+import { useContext, useReducer, useEffect } from "react";
 
 import AdminPanelContext from "./AdminPanelContext";
 import AdminPanelReducer from "./AdminPanelReducer";

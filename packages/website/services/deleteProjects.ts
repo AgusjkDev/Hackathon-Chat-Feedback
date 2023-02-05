@@ -1,5 +1,5 @@
-import { APIError, DeleteProjects } from "types/api";
 import { StatusCode } from "enums/api";
+import type { APIError, DeleteProjects } from "types/api";
 
 export default async function deleteProjects(_id: string): Promise<DeleteProjectsReturnValues> {
     try {

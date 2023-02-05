@@ -1,4 +1,4 @@
-import { FormProps } from "components/Form";
+import type { FormProps } from "components/Form";
 
 export interface BaseForm extends Omit<FormProps, "handleSubmit"> {
     type: "login" | "create" | "update";

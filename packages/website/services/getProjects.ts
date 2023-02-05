@@ -1,5 +1,5 @@
-import { APIError, GetProjects } from "types/api";
 import { StatusCode } from "enums/api";
+import type { APIError, GetProjects } from "types/api";
 
 export default async function getProjects(): Promise<Project[]> {
     try {

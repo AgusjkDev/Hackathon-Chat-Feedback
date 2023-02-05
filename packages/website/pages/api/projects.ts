@@ -2,7 +2,8 @@ import type { NextApiRequest, NextApiResponse } from "next";
 
 import { db } from "utils";
 import { ProjectModel } from "models";
-import {
+import { HTTPMethod, StatusCode } from "enums/api";
+import type {
     APIError,
     GetProjects,
     PostProjects,
@@ -11,7 +12,6 @@ import {
     PatchProjects,
     ExpectedProjectsBody,
 } from "types/api";
-import { HTTPMethod, StatusCode } from "enums/api";
 
 export default async function handler(
     req: NextApiRequest,
