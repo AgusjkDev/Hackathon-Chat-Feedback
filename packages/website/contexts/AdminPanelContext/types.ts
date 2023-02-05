@@ -17,15 +17,15 @@ export interface AdminPanelState {
 export type HandleCreate = () => void;
 export type HandleUpdate = (project: Project) => void;
 export type HandleDelete = (project: Project) => Promise<void>;
-export type HandleOutsideModalClick = (event: React.MouseEvent<HTMLDivElement>) => void;
 export type HandleSubmit = HandleSubmitType;
+export type SetShowModal = (newValue: boolean) => void;
 
 export interface AdminPanelContext extends AdminPanelState {
     handleCreate: HandleCreate;
     handleUpdate: HandleUpdate;
     handleDelete: HandleDelete;
-    handleOutsideModalClick: HandleOutsideModalClick;
     handleSubmit: HandleSubmit;
+    setShowModal: SetShowModal;
 }
 
 export enum Type {

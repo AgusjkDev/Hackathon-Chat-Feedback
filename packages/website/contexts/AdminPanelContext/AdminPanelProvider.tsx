@@ -7,13 +7,7 @@ import { Type } from "./types";
 import { ProjectsContext, SocketsContext } from "contexts";
 import { postProjects, putProjects, deleteProjects } from "services";
 import { Event } from "enums/events";
-import type {
-    HandleCreate,
-    HandleUpdate,
-    HandleDelete,
-    HandleOutsideModalClick,
-    HandleSubmit,
-} from "./types";
+import type { HandleCreate, HandleUpdate, HandleDelete, HandleSubmit, SetShowModal } from "./types";
 
 interface ProjectsProviderProps {
     children: React.ReactNode;
@@ -65,17 +59,6 @@ export default function ProjectsProvider({ children }: ProjectsProviderProps) {
         });
     };
 
-    const handleOutsideModalClick: HandleOutsideModalClick = event => {
-        const target = event.target as HTMLDivElement;
-
-        if (target.getAttribute("data-modal")) {
-            dispatch({
-                type: Type.SET_SHOW_MODAL,
-                payload: false,
-            });
-        }
-    };
-
     const handleSubmit: HandleSubmit = async (values, setErrorMessage, resetForm) => {
         const isCreateForm = state.form.type === "create";
 
@@ -106,6 +89,13 @@ export default function ProjectsProvider({ children }: ProjectsProviderProps) {
         if (isCreateForm) window.scroll(0, 0);
     };
 
+    const setShowModal: SetShowModal = newValue => {
+        dispatch({
+            type: Type.SET_SHOW_MODAL,
+            payload: newValue,
+        });
+    };
+
     useEffect(() => {
         if (!state.alert.message) return;
 
@@ -131,8 +121,8 @@ export default function ProjectsProvider({ children }: ProjectsProviderProps) {
                 handleCreate,
                 handleUpdate,
                 handleDelete,
-                handleOutsideModalClick,
                 handleSubmit,
+                setShowModal,
             }}
         >
             {children}

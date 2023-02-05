@@ -4,19 +4,13 @@ import { useContext } from "react";
 
 import Button from "./Button";
 import Projects from "./Projects";
+import Modal from "./Modal";
 import Form from "./Form";
 import { AdminPanelContext } from "contexts";
 
 export default function AdminPanel() {
-    const {
-        form,
-        alert,
-        showAlert,
-        showModal,
-        handleCreate,
-        handleOutsideModalClick,
-        handleSubmit,
-    } = useContext(AdminPanelContext);
+    const { form, alert, showAlert, showModal, handleCreate, handleSubmit } =
+        useContext(AdminPanelContext);
 
     return (
         <>
@@ -29,13 +23,9 @@ export default function AdminPanel() {
             </div>
 
             {showModal && (
-                <div
-                    data-modal
-                    onClick={handleOutsideModalClick}
-                    className="fixed inset-0 z-[1] flex min-h-screen w-full items-center justify-center bg-black/50 px-4 hover:cursor-pointer md:px-0"
-                >
+                <Modal>
                     <Form {...{ ...form, handleSubmit }} />
-                </div>
+                </Modal>
             )}
 
             {showAlert && (
