@@ -44,7 +44,7 @@ export default async function handler(
             }
 
         case HTTPMethod.POST:
-            if (![name, website, repository].every(value => value)) {
+            if (![name, website, repository].every(value => value != null)) {
                 return res
                     .status(StatusCode.BadRequest)
                     .json({ msg: "¡Petición Inválida!", status: StatusCode.BadRequest });
