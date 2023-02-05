@@ -46,7 +46,7 @@ export default function Projects() {
         <main className="flex w-full max-w-xl flex-col items-center gap-8 md:max-w-2xl md:gap-10">
             {isLoading ? (
                 <Image alt="Cargando..." src="/spinner.svg" width={36} height={36} />
-            ) : (
+            ) : projects.length || isAdminPanel ? (
                 projects.map(project => {
                     const { _id, name, website, repository, feedback, isActive } = project;
 
@@ -108,6 +108,20 @@ export default function Projects() {
                         </div>
                     );
                 })
+            ) : (
+                <>
+                    <p className="text-center text-2xl font-bold text-secondary">
+                        Aún no hay proyectos
+                    </p>
+
+                    <Image
+                        alt="Emote de midudev sosteniendo su cabeza"
+                        src="/imgs/MiduNotLikeThis.png"
+                        width={112}
+                        height={112}
+                        className="mx-auto -mt-4 h-24 w-24"
+                    />
+                </>
             )}
         </main>
     );
