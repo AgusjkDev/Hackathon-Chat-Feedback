@@ -22,9 +22,9 @@ export default function Feedback({ feedback }: FeedbackProps) {
             </div>
 
             <ul className="flex w-full list-disc justify-evenly text-sm font-medium">
-                <li className="text-positive">{`${positivePercentaje}% (${positive})`}</li>
-                <li className="text-neutral">{`${neutralPercentaje}% (${neutral})`}</li>
-                <li className="text-negative">{`${negativePercentaje}% (${negative})`}</li>
+                <li className="text-positive-dark">{`${positivePercentaje}% (${positive})`}</li>
+                <li className="text-neutral-dark">{`${neutralPercentaje}% (${neutral})`}</li>
+                <li className="text-negative-dark">{`${negativePercentaje}% (${negative})`}</li>
             </ul>
         </div>
     );

@@ -16,11 +16,18 @@ module.exports = {
                     DEFAULT: colors.indigo[600],
                     dark: colors.indigo[700],
                 },
-                positive: colors.green[500],
-                negative: colors.rose[500],
+                positive: {
+                    DEFAULT: colors.green[500],
+                    dark: colors.green[700],
+                },
+                negative: {
+                    DEFAULT: colors.rose[500],
+                    dark: colors.red[600],
+                },
                 neutral: {
                     ...colors.neutral,
                     DEFAULT: colors.slate[500],
+                    dark: colors.gray[600],
                 },
             },
             keyframes: {
