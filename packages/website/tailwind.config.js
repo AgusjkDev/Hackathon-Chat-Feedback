@@ -8,6 +8,7 @@ module.exports = {
             colors: {
                 primary: {
                     lightest: colors.gray[50],
+                    lighter: colors.gray[200],
                     light: colors.gray[400],
                     DEFAULT: colors.gray[600],
                 },
