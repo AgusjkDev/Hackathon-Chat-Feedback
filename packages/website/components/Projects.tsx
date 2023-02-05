@@ -97,7 +97,7 @@ export default function Projects() {
 
                             <Feedback feedback={feedback} />
 
-                            {!isActive && (
+                            {(!isActive || process.env.NEXT_PUBLIC_HACKATHON_ENDED === "true") && (
                                 <footer className="mx-auto">
                                     <span className="flex text-center text-sm font-medium">
                                         El análisis de éste proyecto acabó&nbsp;
