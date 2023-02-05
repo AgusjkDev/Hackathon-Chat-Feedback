@@ -12,8 +12,8 @@ export default function Feedback({ feedback }: FeedbackProps) {
     return (
         <div className="flex flex-col gap-3">
             <span className="text-center text-sm font-medium">{`${total} ${
-                total !== 1 ? "mensajes analizados" : "mensaje analizado"
-            }`}</span>
+                total !== 1 ? "mensajes" : "mensaje"
+            } de feedback`}</span>
 
             <div className="flex h-8 w-full">
                 <div
