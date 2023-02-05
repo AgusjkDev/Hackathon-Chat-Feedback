@@ -34,6 +34,7 @@ export default function Head() {
                 name="twitter:image"
                 content="https://raw.githubusercontent.com/agusjkdev/hackathon-chat-feedback/main/.github/preview.png"
             />
+            <link rel="preload" as="image" href="/imgs/MiduNotLikeThis.png" />
             <link rel="icon" href="/favicons/favicon.ico" sizes="any" />
             <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
             <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
