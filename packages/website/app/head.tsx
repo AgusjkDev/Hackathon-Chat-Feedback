@@ -22,6 +22,18 @@ export default function Head() {
                 property="og:image"
                 content="https://raw.githubusercontent.com/agusjkdev/hackathon-chat-feedback/main/.github/preview.png"
             />
+            <meta name="twitter:card" content="summary_large_image" />
+            <meta property="twitter:domain" content="hackathon-chat-feedback.vercel.app" />
+            <meta property="twitter:url" content="https://hackathon-chat-feedback.vercel.app/" />
+            <meta name="twitter:title" content="Hackathon Chat Feedback" />
+            <meta
+                name="twitter:description"
+                content="Analizaremos el comportamiento del chat mientras midudev esté observando los proyectos de la hackathon de co:here."
+            />
+            <meta
+                name="twitter:image"
+                content="https://raw.githubusercontent.com/agusjkdev/hackathon-chat-feedback/main/.github/preview.png"
+            />
             <link rel="icon" href="/favicons/favicon.ico" sizes="any" />
             <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
             <link rel="icon" type="image/png" sizes="16x16" href="/favicons/favicon-16x16.png" />
