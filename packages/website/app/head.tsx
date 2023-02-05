@@ -20,7 +20,7 @@ export default function Head() {
             <meta property="og:type" content="website" />
             <meta
                 property="og:image"
-                content="https://github.com/agusjkdev/hackathon-chat-feedback/blob/main/.github/preview.png"
+                content="https://raw.githubusercontent.com/agusjkdev/hackathon-chat-feedback/main/.github/preview.png"
             />
             <link rel="icon" href="/favicons/favicon.ico" sizes="any" />
             <link rel="icon" type="image/png" sizes="32x32" href="/favicons/favicon-32x32.png" />
