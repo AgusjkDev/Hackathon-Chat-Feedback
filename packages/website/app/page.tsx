@@ -15,16 +15,16 @@ export default function Index() {
                             href="https://www.twitch.tv/midudev"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-secondary-light underline transition-colors duration-300 hover:text-secondary"
+                            className="text-secondary underline transition-colors duration-300 hover:text-secondary-dark"
                         >
                             midudev
                         </a>
-                        &nbsp;esté observando los proyectos de la hackathon de&nbsp;
+                        &nbsp;esté en directo observando los proyectos de la hackathon de&nbsp;
                         <a
                             href="https://docs.cohere.ai"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-secondary-light underline transition-colors duration-300 hover:text-secondary"
+                            className="text-secondary underline transition-colors duration-300 hover:text-secondary-dark"
                         >
                             co:here
                         </a>
