@@ -6,7 +6,6 @@ import Button from "./Button";
 import Projects from "./Projects";
 import Modal from "./Modal";
 import Form from "./Form";
-import Alert from "./Alert";
 import { AdminPanelContext } from "contexts";
 
 export default function AdminPanel() {
@@ -29,7 +28,15 @@ export default function AdminPanel() {
                 </Modal>
             )}
 
-            {showAlert && <Alert />}
+            {showAlert && (
+                <span
+                    className={`fixed top-0 left-0 z-[2] w-full p-4 text-center font-bold text-white ${
+                        alert.type === "success" ? "bg-secondary" : "bg-red-600"
+                    }`}
+                >
+                    {alert.message}
+                </span>
+            )}
         </>
     );
 }
