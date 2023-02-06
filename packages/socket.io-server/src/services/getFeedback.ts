@@ -2,6 +2,7 @@ import fetch from "cross-fetch";
 
 import getExamples from "./getExamples";
 import { Feedback } from "../enums";
+import Logger from "../logger";
 
 interface CohereAPIResponse {
     id: string;
@@ -45,14 +46,20 @@ export default async function getFeedback(message: string): Promise<Feedback> {
         });
         const response: CohereAPIResponse = await request.json();
         if (request.status !== 200) {
-            console.error(response);
+            Logger.log(
+                `Couldn't get feedback from message: '${message}'. ${JSON.stringify(response)}`,
+                false
+            );
 
             return Feedback.Unknown;
         }
 
-        return response.classifications[0].prediction;
+        const feedback = response.classifications[0].prediction;
+        Logger.log(`Got ${feedback} feedback from message: '${message}'`, true);
+
+        return feedback;
     } catch (e) {
-        console.error(e);
+        Logger.log(`Couldn't get feedback from message: '${message}'. ${e}`, false);
 
         return Feedback.Unknown;
     }

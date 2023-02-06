@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 
 import { getFeedback, patchFeedback } from "./services";
 import { Event, Feedback } from "./enums";
+import Logger from "./logger";
 
 dotenv.config();
 
@@ -22,19 +23,24 @@ io.use((socket, next) => {
 });
 
 io.on("connection", socket => {
-    socket.on(Event.CreatedProject, (createdProject: Project) =>
-        socket.broadcast.emit(Event.CreatedProject, createdProject)
-    );
+    socket.on(Event.CreatedProject, (createdProject: Project) => {
+        Logger.event(Event.CreatedProject);
+        socket.broadcast.emit(Event.CreatedProject, createdProject);
+    });
 
-    socket.on(Event.UpdatedProject, (updatedProject: Project) =>
-        socket.broadcast.emit(Event.UpdatedProject, updatedProject)
-    );
+    socket.on(Event.UpdatedProject, (updatedProject: Project) => {
+        Logger.event(Event.UpdatedProject);
+        socket.broadcast.emit(Event.UpdatedProject, updatedProject);
+    });
 
-    socket.on(Event.DeletedProject, (deletedProject: Project) =>
-        socket.broadcast.emit(Event.DeletedProject, deletedProject)
-    );
+    socket.on(Event.DeletedProject, (deletedProject: Project) => {
+        Logger.event(Event.DeletedProject);
+        socket.broadcast.emit(Event.DeletedProject, deletedProject);
+    });
 
     socket.on(Event.ChatMessage, async (message: string) => {
+        Logger.event(Event.ChatMessage);
+
         const feedback = await getFeedback(message);
         if (feedback === Feedback.Unknown) return;
 
