@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect } from "react";
-import io from "socket.io-client";
+import io, { Socket } from "socket.io-client";
 
 import SocketsContext from "./SocketsContext";
 import { ProjectsContext } from "contexts";
@@ -12,14 +12,14 @@ interface SocketsProviderProps {
 
 export default function SocketsProvider({ children }: SocketsProviderProps) {
     const { projects, isLoading, setProjects } = useContext(ProjectsContext);
-    const [state] = useState<SocketsState>({
-        socket: io(process.env.NEXT_PUBLIC_SOCKETIO_URL!, { transports: ["websocket"] }),
-    });
+    const [socket] = useState<Socket | null>(
+        !process.env.NEXT_PUBLIC_HACKATHON_ENDED
+            ? io(process.env.NEXT_PUBLIC_SOCKETIO_URL!, { transports: ["websocket"] })
+            : null
+    );
 
     useEffect(() => {
-        if (isLoading) return;
-
-        const { socket } = state;
+        if (isLoading || !socket) return;
 
         socket.on(Event.CreatedProject, (createdProject: Project) => {
             setProjects([createdProject, ...projects.map(p => ({ ...p, isActive: false }))]);
@@ -62,7 +62,7 @@ export default function SocketsProvider({ children }: SocketsProviderProps) {
         return () => {
             socket.removeAllListeners();
         };
-    }, [projects, isLoading, state.socket]);
+    }, [projects, isLoading, socket]);
 
-    return <SocketsContext.Provider value={{ ...state }}>{children}</SocketsContext.Provider>;
+    return <SocketsContext.Provider value={{ socket }}>{children}</SocketsContext.Provider>;
 }

@@ -45,7 +45,7 @@ export default function ProjectsProvider({ children }: ProjectsProviderProps) {
             });
         }
 
-        socket.emit(Event.DeletedProject, project);
+        socket?.emit(Event.DeletedProject, project);
         setProjects(
             projects
                 .filter(({ _id }) => _id !== project._id)
@@ -72,7 +72,7 @@ export default function ProjectsProvider({ children }: ProjectsProviderProps) {
             return resetForm();
         }
 
-        socket.emit(isCreateForm ? Event.CreatedProject : Event.UpdatedProject, project);
+        socket?.emit(isCreateForm ? Event.CreatedProject : Event.UpdatedProject, project);
         setProjects(
             isCreateForm
                 ? [project!, ...projects.map(p => ({ ...p, isActive: false }))]
