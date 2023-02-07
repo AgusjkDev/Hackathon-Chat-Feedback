@@ -25,7 +25,7 @@ interface CohereAPIResponse {
 }
 
 let examples;
-getExamples("v1.csv").then(data => {
+getExamples("v2.csv").then(data => {
     examples = data;
 });
 
